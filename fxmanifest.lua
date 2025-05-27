@@ -14,6 +14,7 @@ description 'Application resource'
 --[[ Manifest ]]--
 dependencies{
     '/onesync',
+    'ox_lib'
 }
 
 server_scripts {
