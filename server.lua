@@ -2,13 +2,13 @@ local ox_inventory = exports.ox_inventory
 
 exports('fakedocument', function(event, item, inventory, slot, data)
     if event == 'usingItem' then
-        print('Using '..item.label)
+        -- print('Using '..item.label)
 
     elseif event == 'usedItem' then
-        print('Used '..item.label)
+        -- print('Used '..item.label)
 
     else
-        print('Item use invalid -'..item.label)
+        -- print('Item use invalid -'..item.label)
 
     end
 end)

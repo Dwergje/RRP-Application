@@ -3,16 +3,16 @@ local ox_inventory = exports.ox_inventory
 exports('fakedocument', function(data, slot)
     
     ox_inventory:useItem(data, function(data)
-    print('Attempting to use '..data.label)
+    -- print('Attempting to use '..data.label)
         if data then
-            print('using '..data.label)
+            -- print('using '..data.label)
 
             local input = lib.inputDialog('Fill out the document', {
                 {type = 'input', label = 'Owner', description = 'The owner of this document'},
                 {type = 'color', label = 'Ink color', description = 'The color of ink used on the document', default = '#ff0000'}
             })
 
-            print(json.encode(input))
+            -- print(json.encode(input))
 
             local inputr, inputg, inputb = lib.math.hextorgb(input[2])
 
