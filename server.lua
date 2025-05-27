@@ -9,8 +9,32 @@ exports('fakedocument', function(event, item, inventory, slot, data)
 
     else
         print('(Server): Item use invalid -'..item.label)
+
+    end
+end)
+
+RegisterNetEvent('rrp-application:setItemwithInput')
+AddEventHandler('rrp-application:setItemwithInput', function(userInput, itemSlot)
+    local source = source
+    print(json.encode(source))
+    print('Owner: '..userInput[1])
+    print('Color: '..userInput[2])
+
+    -- set metadata on item
+    local document = ox_inventory:Search(source, 'slots', itemSlot.name)
+    for k, v in pairs(document) do
+        print('\n___________'..'\n index '..k)
+        print(v.name, 'slot: '..v.slot, 'metadata: '..json.encode(v.metadata))
+        document = v
+        break
     end
 
+    document.metadata.type = userInput[1]
+    document.metadata.description = 'Written with '..userInput[2]
+    ox_inventory:SetMetadata(source, document.slot, document.metadata)
+
+    local checkDocument = ox_inventory:Search(source, 'slots', itemSlot.name)
+    print(json.encode(checkDocument), {indent=true})
 end)
 
 
@@ -32,5 +56,15 @@ document.metadata.type = 'userInput.Owner'
 ox_inventory:SetMetadata(source, document.slot, document.metadata)
 print(('modified %sx documents in slot %s with new metadata'):format(document.count, document.slot))
 
+    print('\n=-=-=-=-=-=-=-=\n')
+    print(json.encode(document))
+
+    local documentMetadata = {
+        fakedocument = {
+            label = 'Fake Document (signed)'
+            description = 'A poorly written document'
+            type = userInput[1]
+        }
+    }
 
 ]]--
