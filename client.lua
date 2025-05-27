@@ -19,7 +19,7 @@ exports('fakedocument', function(data, slot)
             TriggerServerEvent('rrp-application:SetItemwithInput', input, slot)
 
             lib.notify({
-                title = 'You used a'..data.label,
+                title = 'You used a '..data.label,
                 type = 'success'
             })
         else
