@@ -1,8 +1,7 @@
 local ox_inventory = exports.ox_inventory
 
 exports('fakedocument', function(data, slot)
-    print(json.encode(data, {indent=true}))
-    print(json.encode(slot, {indent=true}))
+    
     ox_inventory:useItem(data, function(data)
     print('(client): attempting to use '..data.label)
         if data then
@@ -16,16 +15,16 @@ exports('fakedocument', function(data, slot)
             print(json.encode(input))
 
             local inputr, inputg, inputb = lib.math.hextorgb(input[2])
-            print('(client) r: '..inputr)
-            print('(client) g: '..inputg)
-            print('(client) b: '..inputb)
 
-            TriggerServerEvent('rrp-application:setItemwithInput', input, slot)
+            TriggerServerEvent('rrp-application:SetItemwithInput', input, slot)
 
-            ox_inventory:notify({text = '(client): You used '..data.label})
+            lib.notify({
+                title = '(client): You used '..data.label
+                type = 'success'
+            })
         else
             lib.notify({
-                title = 'Item Use Cancelled',
+                title = 'Item Use cancelled',
                 description = 'You cancelled the input.',
                 type = 'error'
             })
@@ -33,15 +32,3 @@ exports('fakedocument', function(data, slot)
     end)
 end)
 
---[[
-
--- cancel if no input
-if not input then return end
-print(json.encode(input))
-
--- convert input to rgb value
-local rgb = lib.math.torgba(input[2])
-
--- TriggerServerEvent
-
-]]--

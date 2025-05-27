@@ -1,3 +1,26 @@
-['cvdocument'] = {
-    
-}
+    ['fakedocument'] = {
+        label = 'Fake Document',
+        weight = 50,
+        stack = false,
+        close = true,
+        description = 'A poorly written document',
+        consume = 0,
+        buttons = {
+            {
+                label = 'Smell the document',
+                action = function(slot)
+                    print('It smells like home.')
+                end
+            }
+        },
+        server = {
+            export = 'rrp-application.fakedocument'
+        },
+        client = {
+            anim = { dict = 'missfam4', clip = 'base' },
+            prop = { model = 'p_amb_clipboard_01', pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, 180.0, 180.0) },
+            usetime = 2000,
+            notification = 'You just remembered you can\'t even read...',
+            export = 'rrp-application.fakedocument'
+        }
+    }

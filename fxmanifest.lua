@@ -6,7 +6,7 @@ lua54       'yes'
 --[[ Resource Information ]]--
 name        'rrp-application'
 author      'Dwergje'
-version     '0.2.0'
+version     '1.0.0'
 description 'Application resource'
 
 
