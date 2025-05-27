@@ -3,9 +3,9 @@ local ox_inventory = exports.ox_inventory
 exports('fakedocument', function(data, slot)
     
     ox_inventory:useItem(data, function(data)
-    print('(client): attempting to use '..data.label)
+    print('Attempting to use '..data.label)
         if data then
-            print('(client) using '..data.label)
+            print('using '..data.label)
 
             local input = lib.inputDialog('Fill out the document', {
                 {type = 'input', label = 'Owner', description = 'The owner of this document'},
@@ -19,7 +19,7 @@ exports('fakedocument', function(data, slot)
             TriggerServerEvent('rrp-application:SetItemwithInput', input, slot)
 
             lib.notify({
-                title = '(client): You used '..data.label,
+                title = 'You used a'..data.label,
                 type = 'success'
             })
         else
